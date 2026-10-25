@@ -33,6 +33,7 @@
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
   --color-ink-muted: var(--ink-muted);
+  --color-ink-soft: var(--ink-soft);
   --color-sand: var(--sand);
   --color-gold: var(--gold);
   --color-sage: var(--sage);
@@ -64,6 +65,7 @@
   --ink: oklch(0.235 0.008 110);
   --ink-foreground: oklch(0.94 0.01 85);
   --ink-muted: oklch(0.6 0.01 100);
+  --ink-soft: oklch(0.38 0.01 100);
   --sand: oklch(0.915 0.016 95);
   --gold: oklch(0.72 0.08 70);
   --sage: oklch(0.62 0.04 120);

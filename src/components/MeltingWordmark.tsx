@@ -20,7 +20,7 @@ export function MeltingWordmark() {
           <feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" />
         </filter>
       </svg>
-      <div className="relative text-ink-muted/40" style={{ filter: "url(#goo)" }}>
+      <div className="relative text-ink-soft" style={{ filter: "url(#goo)" }}>
         <p className="melt-text whitespace-nowrap text-center font-serif text-[22vw] leading-[0.8] tracking-tight">
           Med Estate
         </p>

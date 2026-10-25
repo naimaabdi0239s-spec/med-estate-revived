@@ -323,7 +323,7 @@ function About() {
             <p>Every property in our collection is chosen with care, and every client is looked after by one advisor — from the first viewing to the day they move in.</p>
           </div>
         </div>
-        <img src={gal1} alt="Arched passage opening onto a pool deck" className="h-full min-h-64 w-full object-cover" loading="lazy" />
+        <div className="relative min-h-64"><img src={gal1} alt="Arched passage opening onto a pool deck" className="absolute inset-0 h-full w-full object-cover" loading="lazy" /></div>
       </div>
     </section>
   );
