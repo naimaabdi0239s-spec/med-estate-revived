@@ -13,7 +13,7 @@ const drips = [
 
 export function MeltingWordmark() {
   return (
-    <div className="relative select-none overflow-hidden pb-40" aria-label="Med Estate">
+    <div className="relative mt-8 select-none overflow-hidden pb-36" aria-label="Med Estate">
       <svg className="absolute h-0 w-0" aria-hidden>
         <filter id="goo">
           <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="b" />
@@ -21,7 +21,7 @@ export function MeltingWordmark() {
         </filter>
       </svg>
       <div className="relative text-ink-soft" style={{ filter: "url(#goo)" }}>
-        <p className="melt-text whitespace-nowrap text-center font-serif text-[22vw] leading-[0.8] tracking-tight">
+        <p className="melt-text whitespace-nowrap text-center font-serif text-[19vw] leading-[0.8] tracking-tight">
           Med Estate
         </p>
         {drips.map((d, i) => (
