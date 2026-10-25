@@ -221,7 +221,7 @@ function Categories() {
           {cats.map((c, i) => (
             <img key={c.n} src={c.img} alt="" className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${active === i ? "opacity-100" : "opacity-0"}`} />
           ))}
-          <p className="eyebrow absolute bottom-3 left-3 bg-ink/70 px-2 py-1">{cats[active].cap}</p>
+          <p className="eyebrow absolute bottom-3 left-3 bg-ink/70 px-2 py-1">{cats[active]?.cap}</p>
         </div>
       </div>
     </section>
@@ -408,9 +408,9 @@ function Testimonials() {
           <p className="mt-2 text-xs text-muted-foreground">Placeholder quotes — to be replaced with verified client testimonials.</p>
         </div>
         <div>
-          <blockquote className="min-h-[9rem] font-serif text-3xl leading-snug md:text-4xl">“{quotes[i].q}”</blockquote>
+          <blockquote className="min-h-[9rem] font-serif text-3xl leading-snug md:text-4xl">“{quotes[i]!.q}”</blockquote>
           <div className="mt-6 flex items-center justify-between border-t border-border pt-4">
-            <p className="eyebrow">{quotes[i].who} <span className="ml-2 normal-case tracking-normal text-muted-foreground">{quotes[i].role}</span></p>
+            <p className="eyebrow">{quotes[i]!.who} <span className="ml-2 normal-case tracking-normal text-muted-foreground">{quotes[i]!.role}</span></p>
             <div className="flex gap-2">
               {quotes.map((_, k) => (
                 <button key={k} onClick={() => setI(k)} className={`eyebrow border px-2 py-1 ${k === i ? "border-primary bg-primary text-primary-foreground" : "border-border"}`}>
