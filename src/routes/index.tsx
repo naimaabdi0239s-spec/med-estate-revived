@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import hero from "@/assets/hero.jpg";
 import prop1 from "@/assets/prop1.jpg";
 import prop2 from "@/assets/prop2.jpg";
@@ -11,7 +11,6 @@ import gal4 from "@/assets/gal4.jpg";
 import gal5 from "@/assets/gal5.jpg";
 import prop4 from "@/assets/prop4.jpg";
 import { listings, formatAED } from "@/lib/listings";
-import { MeltingWordmark } from "@/components/MeltingWordmark";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -120,13 +119,16 @@ const priceBands = {
 
 function Select({ label, value, onChange, options }: { label: string; value: string; onChange: (v: string) => void; options: [string, string][] }) {
   return (
-    <label className="block border-b border-input pb-2">
+    <label className="relative block border-b border-input pb-2">
       <span className="eyebrow text-muted-foreground">{label}</span>
-      <select value={value} onChange={(e) => onChange(e.target.value)} className="mt-1 w-full cursor-pointer appearance-none bg-transparent font-serif text-xl outline-none">
+      <select value={value} onChange={(e) => onChange(e.target.value)} className="mt-1 w-full cursor-pointer appearance-none bg-transparent pr-6 font-serif text-xl outline-none">
         {options.map(([v, l]) => (
           <option key={v} value={v}>{l}</option>
         ))}
       </select>
+      <svg aria-hidden="true" viewBox="0 0 12 8" className="pointer-events-none absolute bottom-3 right-0 h-2 w-3 fill-none stroke-muted-foreground stroke-[1.5]">
+        <path d="M1 1.5 6 6.5 11 1.5" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
     </label>
   );
 }
@@ -355,11 +357,6 @@ function Journal() {
               <h3 className="mt-1 font-serif text-2xl">{j.title}</h3>
             </article>
           ))}
-          <div className="hidden flex-col justify-between border border-border p-6 lg:flex">
-            <p className="eyebrow text-muted-foreground">Issue 01</p>
-            <p className="font-serif text-3xl italic leading-tight">Slow reading on the homes and coastlines of the Emirates.</p>
-            <a href="#contact" className="eyebrow self-start border-b border-foreground pb-1">Notify me →</a>
-          </div>
         </div>
       </div>
     </section>
@@ -400,6 +397,10 @@ const quotes = [
 
 function Testimonials() {
   const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((k) => (k + 1) % quotes.length), 5000);
+    return () => clearInterval(t);
+  }, [i]);
   return (
     <section className="bg-sand py-16">
       <div className={`${wrap} grid gap-8 md:grid-cols-[1fr_3fr]`}>
@@ -408,7 +409,7 @@ function Testimonials() {
           <p className="mt-2 text-xs text-muted-foreground">Placeholder quotes — to be replaced with verified client testimonials.</p>
         </div>
         <div>
-          <blockquote className="min-h-[9rem] font-serif text-3xl leading-snug md:text-4xl">“{quotes[i]!.q}”</blockquote>
+          <blockquote className="min-h-[9rem] font-serif text-3xl leading-snug md:text-4xl"><span key={i} className="block animate-in fade-in slide-in-from-right-4 duration-700">“{quotes[i]!.q}”</span></blockquote>
           <div className="mt-6 flex items-center justify-between border-t border-border pt-4">
             <p className="eyebrow">{quotes[i]!.who} <span className="ml-2 normal-case tracking-normal text-muted-foreground">{quotes[i]!.role}</span></p>
             <div className="flex gap-2">
@@ -513,7 +514,7 @@ function Footer() {
         <span className="hidden md:inline">Dubai · Abu Dhabi · Ras Al Khaimah</span>
         <a href="#top" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>Back to top ↑</a>
       </div>
-      <MeltingWordmark />
+      <div className={`${wrap} mt-8 border-t border-ink-muted/30 py-6`}><p className="font-serif text-4xl md:text-5xl">Med Estate</p></div>
     </footer>
   );
 }

@@ -95,6 +95,24 @@
   text-transform: uppercase;
 }
 
+/* Native select dropdowns follow the site palette instead of system defaults */
+select {
+  color-scheme: light;
+}
+select option,
+select optgroup {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+select option:checked,
+select option:hover,
+select option:focus {
+  background-color: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+
 @keyframes drip {
   0%, 15% { transform: scaleY(0); }
   60% { transform: scaleY(1); }
